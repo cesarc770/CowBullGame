@@ -2,20 +2,36 @@
 //  FBullCowGame.cpp
 //  BullCowGame
 //
-//  Created by Cesar Caceres on 2/26/18.
+//  Created by Cesar Caceres.
 //  Copyright © 2018 Cesar Caceres. All rights reserved.
 //
 
 #include "FBullCowGame.hpp"
 
+FBullCowGame::FBullCowGame() { Reset(); }
 
-void FBullCowGame::Reset()
-{ 
-    return;
+int FBullCowGame::GetCurrentTry() const
+{
+    return CurrentTry;
 }
 
-bool FBullCowGame::DidWinGame() { 
+
+int FBullCowGame::GetMaxTries() const
+{
+    return MaxTries;
+}
+
+bool FBullCowGame::DidWinGame() const
+{
     return false;
+}
+
+void FBullCowGame::Reset()
+{
+    constexpr int MAX_TRIES = 8;
+    MaxTries = MAX_TRIES;
+    CurrentTry = 1;
+    return;
 }
 
 
@@ -24,12 +40,7 @@ bool FBullCowGame::checkGuess(std::string) {
 }
 
 
-int FBullCowGame::GetCurrentTry() { 
-    return 0;
-}
 
 
-int FBullCowGame::GetMaxTries() { 
-    return 0;
-}
+
 
