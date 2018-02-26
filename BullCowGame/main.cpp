@@ -7,10 +7,27 @@
 //
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    cout << "Welcome To BULLS AND COWS!\n";
+    constexpr int WORD_LENGTH = 3;
+    
+    //Introduction to the game
+    cout << "Welcome to BULLS AND COWS!\n Have fun with words!\n";
+    cout << "Can you guess the " << WORD_LENGTH;
+    cout << " letter isogram?\n";
+    cout << endl;
+    
+    //Get a guess from the user
+    cout << "Enter your guess: ";
+    string Guess = "";
+    getline(cin, Guess);
+    
+    //Repeate the guess to the user
+    cout << "Your Guess: " << Guess << endl;
+    cout << endl;
+    
     return 0;
 }
