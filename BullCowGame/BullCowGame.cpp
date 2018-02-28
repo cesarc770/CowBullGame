@@ -6,27 +6,33 @@
 //  Copyright © 2018 Cesar Caceres. All rights reserved.
 //
 
+/*This is the game logic with view or user interaction */
+
 #include "BullCowGame.hpp"
 #include <map>
 
 BullCowGame::BullCowGame() { Reset(); }
 
 int BullCowGame::GetCurrentTry() const { return CurrentTry; }
-int BullCowGame::GetMaxTries() const { return MaxTries; }
-int BullCowGame::GetHiddenWordLength() const { return HiddenWord.length(); }
+int BullCowGame::GetHiddenWordLength() const { return (int)HiddenWord.length(); }
 bool BullCowGame::DidWinGame() const { return GameIsWon; }
 
 void BullCowGame::Reset()
 {
-    constexpr int MAX_TRIES = 3;
-    MaxTries = MAX_TRIES;
-    
-    const std::string HIDDEN_WORD = "planet";
+    const std::string HIDDEN_WORD = "marine";
     HiddenWord = HIDDEN_WORD;
     CurrentTry = 1;
     GameIsWon = false;
     return;
 }
+
+int BullCowGame::GetMaxTries() const
+{
+    std::map<int, int> WordLengthToMaxTries {{3,4},{4,6},{5,9},{6,15}};
+    return WordLengthToMaxTries[HiddenWord.length()];
+    
+}
+
 
 WordStatus BullCowGame::CheckGuess(std::string Guess) const
 {
@@ -118,6 +124,9 @@ bool BullCowGame::isLowerCase(std::string Word) const {
     
     return true;
 }
+
+
+
 
 
 

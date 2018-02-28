@@ -7,18 +7,19 @@
 
 
 /* This acts as the view in the MVC Pattern and will contain all that has to do with user interaction. The Game logic is in BullCowGame Class*/
-
 #include <iostream>
 #include <string>
 #include "BullCowGame.hpp"
 
+//function prototyping
 void Print_Intro();
 void PlayGame();
 std::string GetValidGuess();
 bool AskToPlayAgain();
 void PrintGameSummary();
 
-BullCowGame BCGame; // instantiating new game
+BullCowGame BCGame; // instantiating new game which is reused during each game
+
 int main(int argc, const char * argv[])
 {
     //main method and entry point
@@ -83,6 +84,7 @@ std::string GetValidGuess()
     return Guess;
 }
 
+//Play each game until it is completed
 void PlayGame()
 {
     BCGame.Reset();

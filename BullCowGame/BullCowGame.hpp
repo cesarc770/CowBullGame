@@ -39,10 +39,10 @@ public:
 private:
     //initialization in constructor definition
     int CurrentTry;
-    int MaxTries;
     std::string HiddenWord;
     bool GameIsWon;
     
     bool isIsogram(std::string) const;
     bool isLowerCase(std::string) const;
+    std::string ChooseWord();
 };
