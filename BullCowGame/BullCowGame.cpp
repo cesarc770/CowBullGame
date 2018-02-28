@@ -51,19 +51,17 @@ WordStatus BullCowGame::CheckGuess(std::string Guess) const
 }
 
 //Take a valid guess, count cows and bulls and increase # of tries
-BullCowCount BullCowGame::SubmitGuess(std::string Guess)
+BullCowCount BullCowGame::SubmitValidGuess(std::string Guess)
 {
-    //increment turn number
     CurrentTry++;
-    
-    //setup return variable
+
     BullCowCount BullCowCount;
     
-    int HiddenWordLength = HiddenWord.length();
-    //loop through letters in the guess
-    for(int i = 0; i < HiddenWordLength; i++){
+    int WordLength = HiddenWord.length();
+    //loop through letters in the hidden word
+    for(int i = 0; i < WordLength; i++){
         //compare letters in guess against letters in hidden word
-        for(int j = 0; j < HiddenWordLength; j++){
+        for(int j = 0; j < WordLength; j++){
             //if they match then
             if(HiddenWord[i] == Guess[j]){
                 //if in the same place increment bulls

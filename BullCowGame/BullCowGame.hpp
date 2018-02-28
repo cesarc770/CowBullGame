@@ -32,7 +32,7 @@ public:
     bool DidWinGame() const;
     void Reset();
     WordStatus CheckGuess(std::string) const;
-    BullCowCount SubmitGuess(std::string);
+    BullCowCount SubmitValidGuess(std::string);
     
    
     

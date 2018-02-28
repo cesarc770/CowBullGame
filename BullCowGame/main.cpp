@@ -82,7 +82,9 @@ void PlayGame()
     int MaxTries = BCGame.GetMaxTries();
     
     //Loop for the number of turns to ask for guesses
-    std::cout << MaxTries << std::endl;
+    std::cout << "You have " << MaxTries;
+    std::cout << " tries to guess the correct word.\n";
+    std::cout << std::endl;
     
     for(int i = 0; i < MaxTries; i++)
     {
@@ -90,7 +92,7 @@ void PlayGame()
         std::string Guess = GetValidGuess();
         
         //submit valid guess to the game
-        BullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
+        BullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
         //print number of bulls and cows
         std::cout << "Bulls = " << BullCowCount.Bulls;
         std::cout << " Cows = " << BullCowCount.Cows << std::endl;
