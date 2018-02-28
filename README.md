@@ -5,9 +5,12 @@ Simple C++ Personal Project. The goal was to make a simple console game to get m
 ## Getting Started
 
 The project containes 3 files:
-### main.cpp : Works as the view in an MVC project and contains all methods related to user interaction.
-### BullCowGame.cpp : Contains all the logic of the game.
-### BullCowGame.hpp : Contains all header definitions for the game. 
+### main.cpp : 
+Works as the view in an MVC project and contains all methods related to user interaction.
+### BullCowGame.cpp : 
+Contains all the logic of the game.
+### BullCowGame.hpp : 
+Contains all header definitions for the game. 
 
 ### Prerequisites
 
