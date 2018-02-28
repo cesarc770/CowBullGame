@@ -35,7 +35,13 @@ int main(int argc, const char * argv[])
 void Print_Intro()
 {
     //Introduction to the game
-    std::cout << "\n\nWelcome to BULLS AND COWS!\n Have fun with words!\n";
+    std::cout << "\n\nWelcome to BULLS AND COWS!\n\n";
+    std::cout << "\\|/          (__)" << std::endl;
+    std::cout << "      \\------(oo)" << std::endl;
+    std::cout << "       ||    (__)" << std::endl;
+    std::cout << "       ||w--||     \\|/" << std::endl;
+    std::cout << "   \\|/                " << std::endl;
+    std::cout << "\nHave fun with words!\n\n";
     std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
     std::cout << " letter isogram?\n";
     std::cout << std::endl;
@@ -60,18 +66,18 @@ std::string GetValidGuess()
         Status = BCGame.CheckGuess(Guess);
         switch (Status) {
             case WordStatus::Wrong_Length :
-                std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n";
+                std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n\n";
                 break;
             case WordStatus::Not_Isogram :
-                std::cout << "Please enter a word without repeating letters.\n";
+                std::cout << "Please enter a word without repeating letters.\n\n";
                 break;
             case WordStatus::Not_Lowercase :
-                std::cout << "Please enter all lowercases.\n";
+                std::cout << "Please enter all lowercases.\n\n";
                 break;
             default:
                 break;
         }
-        std::cout << std::endl;
+       
     }while (Status != WordStatus::OK);
     
     return Guess;
