@@ -16,6 +16,7 @@ void Print_Intro();
 void PlayGame();
 std::string GetValidGuess();
 bool AskToPlayAgain();
+void PrintGameSummary();
 
 BullCowGame BCGame; // instantiating new game
 int main(int argc, const char * argv[])
@@ -34,7 +35,7 @@ int main(int argc, const char * argv[])
 void Print_Intro()
 {
     //Introduction to the game
-    std::cout << "Welcome to BULLS AND COWS!\n Have fun with words!\n";
+    std::cout << "\n\nWelcome to BULLS AND COWS!\n Have fun with words!\n";
     std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
     std::cout << " letter isogram?\n";
     std::cout << std::endl;
@@ -81,12 +82,13 @@ void PlayGame()
     BCGame.Reset();
     int MaxTries = BCGame.GetMaxTries();
     
-    //Loop for the number of turns to ask for guesses
+    
     std::cout << "You have " << MaxTries;
     std::cout << " tries to guess the correct word.\n";
     std::cout << std::endl;
     
-    for(int i = 0; i < MaxTries; i++)
+    //Loop to ask for guesses while the game has not been won and there are tries available
+    while(!BCGame.DidWinGame() && BCGame.GetCurrentTry() <= MaxTries)
     {
         //Get a guess from the user and print it back to the user
         std::string Guess = GetValidGuess();
@@ -99,6 +101,9 @@ void PlayGame()
         
         std::cout << std::endl;
     }
+    
+    PrintGameSummary();
+    return;
 }
 
 bool AskToPlayAgain()
@@ -108,4 +113,17 @@ bool AskToPlayAgain()
     std::getline(std::cin, Response);
     
     return (Response[0] == 'y') || (Response[0] == 'Y');
+}
+
+void PrintGameSummary()
+{
+    if(BCGame.DidWinGame())
+    {
+        std::cout << "YOU WIN! -- JOB WELL DONE!\n\n";
+    }
+    else
+    {
+        std::cout << "YOU LOSE - BETTER LUCK NEXT TIME!\n\n";
+    }
+    return;
 }

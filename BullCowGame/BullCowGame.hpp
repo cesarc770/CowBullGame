@@ -41,4 +41,8 @@ private:
     int CurrentTry;
     int MaxTries;
     std::string HiddenWord;
+    bool GameIsWon;
+    
+    bool isIsogram(std::string) const;
+    bool isLowerCase(std::string) const;
 };

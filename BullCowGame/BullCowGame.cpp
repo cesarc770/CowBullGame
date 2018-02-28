@@ -7,32 +7,30 @@
 //
 
 #include "BullCowGame.hpp"
+#include <map>
 
 BullCowGame::BullCowGame() { Reset(); }
 
 int BullCowGame::GetCurrentTry() const { return CurrentTry; }
 int BullCowGame::GetMaxTries() const { return MaxTries; }
 int BullCowGame::GetHiddenWordLength() const { return HiddenWord.length(); }
-
-bool BullCowGame::DidWinGame() const
-{
-    return false;
-}
+bool BullCowGame::DidWinGame() const { return GameIsWon; }
 
 void BullCowGame::Reset()
 {
-    constexpr int MAX_TRIES = 8;
+    constexpr int MAX_TRIES = 3;
     MaxTries = MAX_TRIES;
     
     const std::string HIDDEN_WORD = "planet";
     HiddenWord = HIDDEN_WORD;
     CurrentTry = 1;
+    GameIsWon = false;
     return;
 }
 
 WordStatus BullCowGame::CheckGuess(std::string Guess) const
 {
-    if (false)//if the guess is not an isogram
+    if (!isIsogram(Guess))//if the guess is not an isogram
     {
         return WordStatus::Not_Isogram;
     }
@@ -40,7 +38,7 @@ WordStatus BullCowGame::CheckGuess(std::string Guess) const
     {
         return WordStatus::Wrong_Length;
     }
-    else if (false)//if guess is not all lowercase
+    else if (!isLowerCase(Guess))//if guess is not all lowercase
     {
         return WordStatus::Not_Lowercase;
     }
@@ -75,8 +73,53 @@ BullCowCount BullCowGame::SubmitValidGuess(std::string Guess)
             }
         }
     }
+    if(BullCowCount.Bulls == WordLength)
+    {
+        GameIsWon = true;
+    }
+    else
+    {
+        GameIsWon = false;
+    }
     return BullCowCount;
 }
+
+bool BullCowGame::isIsogram(std::string Word) const
+{
+    //0 and 1 letter words are isograms
+    if(Word.length() <= 1){ return true; }
+    
+    std::map<char, bool> LetterSeen;//define map
+    for(auto Letter : Word)
+    {
+        Letter = tolower(Letter); //Handling all case types
+        //if letter is in map
+        if(LetterSeen[Letter])
+        {
+            return false;  //is not an isogram
+        }
+        else
+        {
+            LetterSeen[Letter] = true;//otherwise add letter to map
+        }
+    }
+    return true;
+}
+
+bool BullCowGame::isLowerCase(std::string Word) const {
+    for (auto Letter : Word)
+    {
+        if (!islower(Letter))
+        {
+            return false;
+            
+        }
+    }
+    
+    return true;
+}
+
+
 
 
 
